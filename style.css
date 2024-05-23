@@ -1,0 +1,27 @@
+body {
+    background-color: grey;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.textbx {
+    background-color: white;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 10%;
+    font-size: xx-large;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
