@@ -25,3 +25,18 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.correct {
+    background-color: rgb(9, 219, 9);
+    color: white;
+}
+
+.wrong-position {
+    background-color: yellow;
+    color: black;
+}
+
+.not-in-word {
+    background-color: rgb(74, 74, 74);
+    color: black;
+}
