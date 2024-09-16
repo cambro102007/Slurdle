@@ -3,6 +3,36 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentRow = 0;
     const rowInputs = Array.from(rows).map(row => row.querySelectorAll('.textbx'));
 
+    const wordList = [
+        "Abbie", "mites", "Apple", "Argie", "Asing", "Aseng", "Sally", "Bimbo", "Black", 
+        "black", "brute", "brown", "brown", "brute", "Boche", "bosch", "hater", "Boong", 
+        "boong", "bunga", "Bakra", "Bushy", "Eater", "Camel", "camel", "China", "Swede", 
+        "Ching", "chong", "Chink", "Cholo", "Chile", "népek", "Cokin", "South", "Cushi", 
+        "Kushi", "Dalle", "Batak", "Dalle", "darky", "Dhoti", "Dogan", "dogun", "Eight", 
+        "8ball", "guizi", "juif)", "Frenk", "Fritz", "fricc", "Gabel", "Gadjo", "Galla", 
+        "Garoi", "(검둥이)", "Gexhë", "Godon", "Gooky", "(गोरा", "گورا)", "Goyim", "Goyum", 
+        "Grago", "Groid", "Gubba", "Guizi", "Guido", "Ginzo", "Gyopo", "Kyopo", "Gypsy", 
+        "Gyppo", "gippo", "gyppy", "Hajji", "Hadji", "Haole", "Honky", "Huana", "Hujaa", 
+        "Hunky", "Hymie", "[from", "Indon", "Injun", "Jakun", "Jamet", "Jamet", "women", 
+        "Japie", "Jawir", "Jerry", "Jidan", "jocky", "bunny", "Jutku", "(แกว)", "kafir", 
+        "South", "Kalar", "Kalia", "Kallu", "Katwa", "Katwe", "kacap", "Kebab", "Kettō", 
+        "Khach", "Ikula", "(코쟁이)", "Kraut", "Māori", "Labus", "thief", 
+        "Leupe", "lonko", "Limey", "Londo", "Lubra", "Lundy", "Lugan", "Majus", "Malau", 
+        "Malon", "Mango", "Manne", "Mocro", "Muklo", "Nawar", "niger", "nigor", "nigra", 
+        "nigre", "nigar", "nigga", "negro", "neger", "neche", "nichi", "nidge", "Paddy", 
+        "Pepsi", "Pikey", "piker", "Pilak", "Paddy", "Plouc", "Pocho", "pocha", "Polak", 
+        "Pommy", "Grant", "Potet", "Pshek", "Roske", "ruski", "ryssä", "Sambo", "(三国人)", 
+        "Party", "Seppo", "river", "Sibun", "Shina", "Zhina", "Shine", "(死阿陸)", "Slant", 
+        "Slobo", "Slope", "slopy", "Sooty", "Fairy", "Spade", "spick", "Spook", "Squaw", 
+        "banan", "Swamp", "Szkop", "Szwab", "Taffy", "(also", "Teig)", "Tanka", "Tibla", 
+        "Timur", "Tonto", "Touch", "brush", "Towel", "Turco", "Turko", "Twink", "Ukrop", 
+        "Uncle", "Vanja", "Wagon", "White", "White", "Wigga", "white", "White", "White", 
+        "trash", "Rìběn"
+    ];
+
+    const word1 = wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
+    console.log("Random word to guess:", word1);
+
     function checkRowCompletion(row) {
         return Array.from(row).every(input => input.value.length === 1);
     }
@@ -17,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkWord(word) {
-        const word1 = "trial";
         const word1Array = word1.split('');
         const wordArray = word.split('');
 
@@ -31,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        // Check if the whole word is correct
         if (word === word1) {
             endGame();
         } else {
