@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Slurdle</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
+    <div id="access-denied" style="display: none;">
+        <h1>Access Denied!</h1>
+        <p>You are not allowed to play this game.</p>
+    </div>
+
     <h1>Slurdle</h1>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+    <div id="game-content" style="display: none;">
         <div class="row">
             <input type="text" class="textbx" maxlength="1">
             <input type="text" class="textbx" maxlength="1">
@@ -62,9 +58,9 @@
             <input type="text" class="textbx" maxlength="1" disabled>
             <input type="text" class="textbx" maxlength="1" disabled>
         </div>
-    </body>
-    </html>
+    </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>

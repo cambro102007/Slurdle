@@ -1,10 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Fetch request to check access
+    fetch('http://127.0.0.1:8000/check-object')
+        .then(response => response.json())
+        .then(data => {
+            if (data.access === 'granted') {
+                document.getElementById('game-content').style.display = 'block';
+                document.getElementById('access-denied').style.display = 'none';
+            } else {
+                document.getElementById('game-content').style.display = 'none';
+                document.getElementById('access-denied').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            document.getElementById('access-denied').innerHTML = "<p>Error connecting to server.</p>";
+            document.getElementById('access-denied').style.display = 'block';
+        });
+
+    // Game logic
     const rows = document.querySelectorAll('.row');
     let currentRow = 0;
     const rowInputs = Array.from(rows).map(row => row.querySelectorAll('.textbx'));
 
     const wordList = [
-        "Abbie", "mites", "Apple", "Argie", "Asing", "Aseng", "Sally", "Bimbo", "Black", 
+        "Abbie", "mites", "Apple", "Argie", "Asing", "Aseng", "Sally", "Bimbo", "Black",
         "black", "brute", "brown", "brown", "brute", "Boche", "bosch", "hater", "Boong", 
         "boong", "bunga", "Bakra", "Bushy", "Eater", "Camel", "camel", "China", "Swede", 
         "Ching", "chong", "Chink", "Cholo", "Chile", "népek", "Cokin", "South", "Cushi", 
@@ -16,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Hunky", "Hymie", "[from", "Indon", "Injun", "Jakun", "Jamet", "Jamet", "women", 
         "Japie", "Jawir", "Jerry", "Jidan", "jocky", "bunny", "Jutku", "(แกว)", "kafir", 
         "South", "Kalar", "Kalia", "Kallu", "Katwa", "Katwe", "kacap", "Kebab", "Kettō", 
-        "Khach", "Ikula", "(코쟁이)", "Kraut", "Māori", "Labus", "thief", 
+        "Khach", "Ikula", "(코쟁이)", "Kraut", "Māori", "Labus", "thief",
         "Leupe", "lonko", "Limey", "Londo", "Lubra", "Lundy", "Lugan", "Majus", "Malau", 
         "Malon", "Mango", "Manne", "Mocro", "Muklo", "Nawar", "niger", "nigor", "nigra", 
         "nigre", "nigar", "nigga", "negro", "neger", "neche", "nichi", "nidge", "Paddy", 
@@ -31,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const word1 = wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
-    console.log("Random word to guess:", word1);
 
     function checkRowCompletion(row) {
         return Array.from(row).every(input => input.value.length === 1);
@@ -60,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Check if the whole word is correct
         if (word === word1) {
             endGame();
         } else {
@@ -107,8 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (e.key === 'Enter' || e.key === 'Return') {
                     if (checkRowCompletion(rowInputs[currentRow])) {
                         const word = Array.from(rowInputs[currentRow]).map(input => input.value).join('');
-                        console.log('Word:', word);
-
                         checkWord(word);
                     }
                 } else if (e.key === 'Backspace' && input.value.length === 0) {
